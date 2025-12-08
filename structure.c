@@ -1,5 +1,6 @@
 typedef struct arbre{
-    int nb;
+    int id;
+    float vol;
     struct arbre* fg;
     struct arbre* fd;
     int eq;
