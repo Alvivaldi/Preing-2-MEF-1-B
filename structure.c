@@ -1,3 +1,4 @@
+#define MAX 100
 typedef struct arbre{
     int id;
     float vol;
