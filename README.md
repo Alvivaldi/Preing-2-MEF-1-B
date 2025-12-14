@@ -1,5 +1,3 @@
-# Pre-ing-2-MEF-1-B
-
 # PROJET WildWater
 <img src="./wildwater.png" alt="wildwater" width="400"/>
 
