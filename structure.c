@@ -1,11 +1,11 @@
 #define MAX 100
-typedef struct arbre{
+typedef struct avl{
     int id;
     float vol;
     struct arbre* fg;
     struct arbre* fd;
     int eq;
-}Arbre;
+}AVL;
 
 typedef struct usine{
     char id[MAX];
