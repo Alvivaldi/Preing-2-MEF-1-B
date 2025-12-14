@@ -1,7 +1,7 @@
 # Pre-ing-2-MEF-1-B
 
 # PROJET WildWater
-<img src="./chenyl.png" alt="chenyl" width="400"/>
+<img src="./wildwater.png" alt="wildwater" width="400"/>
 
 ##  Table des matières
 
