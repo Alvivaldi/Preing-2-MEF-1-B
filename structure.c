@@ -6,7 +6,7 @@ typedef struct usine{
     int volume_total; 
 } Usine;
 
-typedef struct avl{
+typedef struct arbre{
     Usine usine;
     struct arbre* fg;
     struct arbre* fd;
