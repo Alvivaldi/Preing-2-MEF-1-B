@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-AVL* creerAVL(int id, long capacite){
+AVL* creerAVL(int id, int capacite_max){
     AVL* a = malloc(sizeof(AVL));
     if(a == NULL){
         printf("Erreur lors de l'allocation mémoire");
@@ -10,10 +10,10 @@ AVL* creerAVL(int id, long capacite){
     }
     a->fd =NULL;
     a->fg = NULL;
-    a->station.identifiant = id;
-    a->station.capacite = capa;
-    a->station.conso = 0;
-    a->equilibre = 0;
+    a->usine.identifiant = id;
+    a->usine.capacite_max = capacite;
+    a->usine.conso = 0;
+    a->eq = 0;
     return a;
  }
 int min(int a, int b){
@@ -45,10 +45,10 @@ AVL* rotationDroite(AVL* a){
     AVL* pivot = a->fg;
     a->fg = pivot->fd;
     pivot->fd = a;
-    int equ_a = a->equilibre;
-    int equ_p = pivot->equilibre;
-    a->equilibre = equ_a - min(equ_p, 0) + 1;
-    pivot->equilibre = max(max(equ_a+2, equ_a + equ_p +2), equ_p +1);
+    int equ_a = a->eq;
+    int equ_p = pivot->eq;
+    a->eq = equ_a - min(equ_p, 0) + 1;
+    pivot->eq = max(max(equ_a+2, equ_a + equ_p +2), equ_p +1);
     a = pivot;
     return a;
 }
@@ -60,10 +60,10 @@ AVL* rotationGauche(AVL* a){
     AVL* pivot = a->fd;
     a->fd = pivot->fg;
     pivot->fg = a;
-    int equ_a = a->equilibre;
-    int equ_p = pivot->equilibre;
-    a->equilibre = equ_a - max(equ_p, 0) -1;
-    pivot->equilibre = min(min(equ_a-2, equ_a + equ_p -2), equ_p-1);
+    int equ_a = a->eq;
+    int equ_p = pivot->eq;
+    a->eq = equ_a - max(equ_p, 0) -1;
+    pivot->eq = min(min(equ_a-2, equ_a + equ_p -2), equ_p-1);
     a = pivot;
     return a;
 }
@@ -88,16 +88,16 @@ AVL* equilibrerAVL(AVL* a){
     if(a == NULL){
         exit(6);
     }
-    if(a->equilibre >= 2){
-        if(a->fd->equilibre>=0){
+    if(a->eq >= 2){
+        if(a->fd->eq>=0){
             return rotationGauche(a);
         }
         else{
             return doubleRotationGauche(a);
         }
     }
-    else if(a->equilibre<=-2){
-        if(a->fg->equilibre<=0){
+    else if(a->eq<=-2){
+        if(a->fg->eq<=0){
             return rotationDroite(a);
         }
         else{
@@ -112,11 +112,11 @@ AVL* insertAVL(AVL* a, int id, long capa, int* h){
         *h = 1;
         return creerAVL(id, capa);
     }
-    else if(id < a->station.identifiant){
+    else if(id < a->usine.id){
         a->fg = insertAVL(a->fg, id, capa, h);
         *h = -*h;
     }
-    else if(id > a->station.identifiant){
+    else if(id > a->usine.id){
         a->fd = insertAVL(a->fd, id, capa, h);
     }
     else{
@@ -124,9 +124,9 @@ AVL* insertAVL(AVL* a, int id, long capa, int* h){
         return a;
     }
     if(*h!=0){
-        a->equilibre = a->equilibre + *h;
+        a->eq = a->eq + *h;
         a = equilibrerAVL(a);
-        if(a->equilibre==0){
+        if(a->eq==0){
             *h = 0;
         }
         else{
@@ -141,14 +141,14 @@ AVL* majConso(AVL* a, long consommation, int id_noeud){  // fonction pour ajoute
         fprintf(stderr, "Erreur : le nœud avec l'identifiant %d est introuvable dans l'arbre.\n", id_noeud);
         exit(7);
     }
-    else if(id_noeud < a->station.identifiant){
+    else if(id_noeud < a->usine.id){
         a->fg = majConso(a->fg, consommation, id_noeud);
     }
-    else if(id_noeud > a->station.identifiant){
+    else if(id_noeud > a->usine.id){
         a->fd = majConso(a->fd, consommation, id_noeud);
     }
     else{
-        a->station.conso += consommation;  // met à jour la consommation totale de la station
+        a->usine.conso += consommation;  // met à jour la consommation totale de la station
     }
     return a;
 }
@@ -156,7 +156,7 @@ AVL* majConso(AVL* a, long consommation, int id_noeud){  // fonction pour ajoute
 void ecrire(AVL* a, FILE* fichier){  // fonction pour écrire les données d'un arbre dans un fichier
     if(a!=NULL){
         ecrire(a->fg, fichier);  // appel récursif pour parcourir le sous-arbre gauche
-        fprintf(fichier, "%d:%ld:%ld\n", a->station.identifiant, a->station.capacite, a->station.conso);  // écrit les informations du nœud courant dans le fichier
+        fprintf(fichier, "%d:%ld:%ld\n", a->usine.id, a->usine.capacite, a->usine.conso);  // écrit les informations du nœud courant dans le fichier
         ecrire(a->fd, fichier);
         free(a);  // libère la mémoire allouée pour le nœud courant
     }
