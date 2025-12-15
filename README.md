@@ -1,4 +1,4 @@
-# PROJET WildWater
+# PROJET C-WildWater
 <img src="./wildwater.png" alt="wildwater" width="400"/>
 
 ##  Table des matières
