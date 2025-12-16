@@ -137,23 +137,6 @@ AVL* insertAVL(AVL* a, int id, long capa, int* h){
     return a;
 }
 
-AVL* majConso(AVL* a, long consommation, int id_noeud){  // fonction pour ajouter consommation à un noeud dans l'arbre
-    if(a == NULL){
-        fprintf(stderr, "Erreur : le nœud avec l'identifiant %d est introuvable dans l'arbre.\n", id_noeud);
-        exit(7);
-    }
-    else if(id_noeud < a->usine.id){
-        a->fg = majConso(a->fg, consommation, id_noeud);
-    }
-    else if(id_noeud > a->usine.id){
-        a->fd = majConso(a->fd, consommation, id_noeud);
-    }
-    else{
-        a->usine.conso += consommation;  // met à jour la consommation totale de la station
-    }
-    return a;
-}
-
 void ecrire(AVL* a, FILE* fichier){  // fonction pour écrire les données d'un arbre dans un fichier
     if(a!=NULL){
         ecrire(a->fg, fichier);  // appel récursif pour parcourir le sous-arbre gauche
