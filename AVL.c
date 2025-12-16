@@ -13,7 +13,6 @@ AVL* creerAVL(int id, int capacite_max){
     a->fg = NULL;
     a->usine.identifiant = id;
     a->usine.capacite_max = capacite;
-    a->usine.conso = 0;
     a->eq = 0;
     return a;
  }
@@ -149,7 +148,6 @@ void ecrire(AVL* a, FILE* fichier){  // fonction pour écrire les données d'un 
 AVL* recupererFichier(FILE* fichier){  // fonction pour construire un arbre AVL à partir d'un fichier
     int id;
     long capacite;
-    long consommation;
     int h = 0;
     AVL* a = NULL;
     while(fscanf(fichier, "%d;%ld;%ld", &id, &capacite, &consommation) != EOF){  // lit une ligne du fichier jusqu'à la fin (EOF)
