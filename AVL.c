@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "AVL.h"
 
 AVL* creerAVL(int id, int capacite_max){
     AVL* a = malloc(sizeof(AVL));
@@ -11,8 +12,8 @@ AVL* creerAVL(int id, int capacite_max){
     }
     a->fd =NULL;
     a->fg = NULL;
-    a->usine.identifiant = id;
-    a->usine.capacite_max = capacite;
+    // a->usine.identifiant = id;
+    a->usine.capacite_max = capacite_max;
     a->eq = 0;
     return a;
  }
@@ -139,7 +140,7 @@ AVL* insertAVL(AVL* a, int id, long capa, int* h){
 void ecrire(AVL* a, FILE* fichier){  // fonction pour écrire les données d'un arbre dans un fichier
     if(a!=NULL){
         ecrire(a->fg, fichier);  // appel récursif pour parcourir le sous-arbre gauche
-        fprintf(fichier, "%d:%ld:%ld\n", a->usine.id, a->usine.capacite, a->usine.conso);  // écrit les informations du nœud courant dans le fichier
+        // fprintf(fichier, "%d:%ld:%ld\n", a->usine.id, a->usine.capacite_max, a->usine.conso);  // écrit les informations du nœud courant dans le fichier
         ecrire(a->fd, fichier);
         free(a);  // libère la mémoire allouée pour le nœud courant
     }
@@ -150,14 +151,14 @@ AVL* recupererFichier(FILE* fichier){  // fonction pour construire un arbre AVL 
     long capacite;
     int h = 0;
     AVL* a = NULL;
-    while(fscanf(fichier, "%d;%ld;%ld", &id, &capacite, &consommation) != EOF){  // lit une ligne du fichier jusqu'à la fin (EOF)
-        if(consommation == 0){  // si la consommation est 0, on a une nouvelle usine
-            a = insertAVL(a, id, capacite, &h);
-        }
-        else{
-            a = majConso(a, consommation, id);
-        }
-    }
+    // while(fscanf(fichier, "%d;%ld;%ld", &id, &capacite, &consommation) != EOF){  // lit une ligne du fichier jusqu'à la fin (EOF)
+    //     if(consommation == 0){  // si la consommation est 0, on a une nouvelle usine
+    //         a = insertAVL(a, id, capacite, &h);
+    //     }
+    //     else{
+    //         a = majConso(a, consommation, id);
+    //     }
+    // }
     return a;
 }
 
