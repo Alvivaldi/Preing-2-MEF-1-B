@@ -9,6 +9,10 @@
 
 Usine* creerUsine(char* id, double Vmax, double Vcapt, double Vreel) {
     Usine* u = malloc(sizeof(Usine));
+    if (u == NULL) {
+    printf("Erreur d'allocation mémoire\n");
+    exit(1);
+    }
     strcpy(u->identifiant, id);
     u->volume_max = Vmax;
     u->volume_capt = Vcapt;
@@ -91,4 +95,78 @@ Usine* rotationDroite(Usine* racine) {
     pivot->eq = max3(eq_r + 2, eq_r + eq_p + 2, eq_p + 1);
 
     return pivot;
+}
+
+
+
+Usine* rotationDoubleDroite(Usine* a) {
+    if (a == NULL){
+        return NULL;
+    }
+    a->gauche = rotationGauche(a->gauche);
+    return rotationDroite(a);
+}
+
+Usine* rotationDoubleGauche(Usine* a) {
+    if (a == NULL){
+        return NULL;
+    }
+    a->droite = rotationDroite(a->droite);
+    return rotationGauche(a);
+}
+
+
+
+Usine* equilibrerAVL(Usine* a) {
+    if (a == NULL){
+        return NULL;
+    } 
+    if (a->eq >= 2) {
+        if (a->droite->eq >= 0) {
+            return rotationGauche(a); 
+        } else {
+            return rotationDoubleGauche(a);
+        }
+    } 
+    else if (a->eq <= -2) {
+        if (a->gauche->eq <= 0) {
+            return rotationDroite(a);
+        } else {
+            return rotationDoubleDroite(a);
+        }
+    }
+    return a;
+}
+
+
+
+Usine* insertionAVL(Usine* a, Usine* u, int *h) {
+    if (a == NULL) {
+        *h = 1;
+        return u; 
+    }
+
+    if (strcmp(u->identifiant, a->identifiant) > 0) { 
+        a->gauche = insertionAVL(a->gauche, u, h);
+        *h = -*h; 
+    }
+    else if (strcmp(u->identifiant, a->identifiant) < 0) {
+        a->droite = insertionAVL(a->droite, u, h);
+    }
+    else { 
+        *h = 0;
+        return a;
+    }
+
+    if (*h != 0) {
+        a->eq += *h; 
+        a = equilibrerAVL(a);
+
+        if (a->eq == 0)
+            *h = 0;
+        else
+            *h = 1;
+    }
+
+    return a;
 }
