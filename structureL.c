@@ -1,3 +1,6 @@
+
+#define MAX 100
+
 typedef struct arbre{
     char id[MAX];
     int capacite_max;       
