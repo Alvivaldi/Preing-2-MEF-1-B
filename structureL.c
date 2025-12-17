@@ -12,22 +12,22 @@ typedef struct arbre{
     int equilibre;
 }AVL;
 
-typedef struct Node {
+typedef struct Noeud {
     char id[MAX];
     int fuite;
     int volume;
     struct enfant* enfants;
-}Node;
+}Noeud;
 
 typedef struct enfants {
-    struct Node* node;
+    struct Noeud* noeud;
     struct enfant* suivant;
 }enfant;
 
-typedef struct AVLNode {
+typedef struct AVLNoeud {
     char id[MAX];
     Node* noeud;
     int hauteur;
-    struct AVLNode* fg;
-    struct AVLNode* fd;
-} AVLNode;
+    struct AVLNoeud* fg;
+    struct AVLNoeud* fd;
+} AVLNoeud;
