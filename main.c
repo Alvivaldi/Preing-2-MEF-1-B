@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "avl.h"
 #include "fichier.h"
 #include "AVLA.h"
 int main() {
