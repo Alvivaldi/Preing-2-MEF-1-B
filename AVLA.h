@@ -23,8 +23,9 @@ Usine* rotationDroite(Usine* racine);
 Usine* rotationDoubleDroite(Usine* a) ;
 Usine* rotationDoubleGauche(Usine* a);
 Usine* equilibrerAVL(Usine* a);
-Usine* insererAVL(Usine* racine, Usine* u);
+Usine* insertionAVL(Usine* a, Usine* u, int *h) ;
+Usine* chercherUsine(Usine* racine, char* id);
 
-
+void afficherAVL(Usine* racine);
 
 #endif

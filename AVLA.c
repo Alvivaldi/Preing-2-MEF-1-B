@@ -194,14 +194,18 @@ Usine* chercherUsine(Usine* racine, char* id) {
 
 
 
-int mettreAJourVolumes(Usine* u, double Vmax, double Vcapt, double Vreel) {
-    if (u == NULL) {
-        return 0;
-    }
-   
-    u->volume_max  = Vmax;
-    u->volume_capt += Vcapt;
-    u->volume_reel += Vreel;
 
-    return 1;
+void afficherAVL(Usine* racine) {
+    if (racine == NULL)
+        return;
+
+    // Parcours gauche
+    afficherAVL(racine->gauche);
+
+    // Affichage des données de l’usine
+    printf("ID: %s | Vmax: %.2f | Vcapt: %.2f | Vreal: %.2f\n",
+           racine->identifiant, racine->volume_max, racine->volume_capt, racine->volume_reel);
+
+    // Parcours droit
+    afficherAVL(racine->droite);
 }
