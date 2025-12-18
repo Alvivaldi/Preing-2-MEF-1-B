@@ -170,3 +170,38 @@ Usine* insertionAVL(Usine* a, Usine* u, int *h) {
 
     return a;
 }
+
+
+
+
+Usine* chercherUsine(Usine* racine, char* id) {
+    if (racine == NULL) {
+        return NULL;
+    }
+
+    int cmp = strcmp(id, racine->identifiant);
+
+    if (cmp == 0) {
+        return racine; 
+    }
+    else if (cmp > 0) {
+        return chercherUsine(racine->gauche, id);
+    }
+    else {
+        return chercherUsine(racine->droite, id);
+    }
+}
+
+
+
+int mettreAJourVolumes(Usine* u, double Vmax, double Vcapt, double Vreel) {
+    if (u == NULL) {
+        return 0;
+    }
+   
+    u->volume_max  = Vmax;
+    u->volume_capt += Vcapt;
+    u->volume_reel += Vreel;
+
+    return 1;
+}

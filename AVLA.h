@@ -7,6 +7,7 @@ typedef struct Usine {
     double volume_max;
     double volume_capt;
     double volume_reel;
+    
     struct Usine* gauche;
     struct Usine* droite;
     int eq;

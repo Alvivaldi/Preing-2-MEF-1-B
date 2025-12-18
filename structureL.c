@@ -26,7 +26,7 @@ typedef struct enfants {
 
 typedef struct AVLNoeud {
     char id[MAX];
-    Node* noeud;
+    Noeud* noeud;
     int hauteur;
     struct AVLNoeud* fg;
     struct AVLNoeud* fd;
