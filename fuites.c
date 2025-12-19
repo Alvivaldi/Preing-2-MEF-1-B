@@ -37,11 +37,8 @@ double calculer_pertes(Chainon* c, double vol_entrer) {
     }
 
     double total_fuites= 0.0;
-    
-    // L'eau est répartie équitablement entre chaque enfant
     double vol_troncon = vol_entrer / nb_fils;
 
-    // Parcourir chaque fils pour calculer la fuite du tronçon 
     tmp = c->fils;
     while (tmp != NULL) {
         double volume_perdu = vol_troncon * (tmp->fuites / 100.0);
