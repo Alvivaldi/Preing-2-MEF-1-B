@@ -3,6 +3,10 @@ void remplir_fichiers(AVL a, FILE* Fmax, FILE* Fcapt, FILE* Freel){
          return;
     }
 
+    if(a->usine == NULL){
+        return;
+    }
+
     remplir_fichiers(a->fd, Fmax, Fcapt, Freel);
 
     fprintf(Fmax,  "%s;%.2f\n", a->id, a->usine->volume_max);
