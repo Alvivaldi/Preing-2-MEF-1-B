@@ -24,3 +24,31 @@ void generer_fichiers_histogramme(AVL a){
     fclose(Fcapt);
     fclose(Freel);
 }
+double calculer_pertes(Chainon* c, double vol_entrer) {
+    if (c == NULL || c->fils == NULL) {
+        return 0;
+    }
+    
+    int nb_fils = 0;
+    Chainon* tmp = c->fils;
+    while (tmp != NULL) {
+        nb_fils++;
+        tmp = tmp->suivant;
+    }
+
+    double total_fuites= 0.0;
+    
+    // L'eau est répartie équitablement entre chaque enfant
+    double vol_troncon = vol_entrer / nb_fils;
+
+    // Parcourir chaque fils pour calculer la fuite du tronçon 
+    tmp = c->fils;
+    while (tmp != NULL) {
+        double volume_perdu = vol_troncon * (tmp->fuites / 100.0);
+        double vol_restant = vol_troncon - volume_perdu;
+        total_fuites += volume_perdu+ calculer_pertes(tmp, vol_restant);
+        tmp = tmp->suivant;
+    }
+
+    return total_fuites;
+}
