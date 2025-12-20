@@ -3,17 +3,13 @@ void remplir_fichiers(AVL* a, FILE* Fmax, FILE* Fcapt, FILE* Freel){
          return;
     }
 
-    if(a->usine == NULL){
-        return;
-    }
-
     remplir_fichiers(a->fd, Fmax, Fcapt, Freel);
 
     fprintf(Fmax,  "%s;%.2f\n", a->id, a->usine->volume_max);
-    fprintf(Fcapt,  "%s;%.2f\n", a->id, a->usine->volume_capte);
+    fprintf(Fcapt,  "%s;%.2f\n", a->id, a->usine->volume_capt);
     fprintf(Freel, "%s;%.2f\n", a->id, a->usine->volume_reel);
 
-    remplir_ficher(a, Fmax, Fcapt, Freel);
+    remplir_ficher(a->fg, Fmax, Fcapt, Freel);
 }
 
 void generer_fichiers_histogramme(AVL* a){

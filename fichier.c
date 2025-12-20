@@ -23,13 +23,17 @@ int estSourceVersUsine(char* c3, char* c4, char* c5) {
 
 Usine* lireCSV(const char* nom) {
     FILE* f = fopen(nom, "r");
+
+    if (f == NULL){
+        exit(1);
+    }
     char ligne[256];
     Usine* racine = NULL;
     int h;
    
     while (fgets(ligne, 256, f)) {
 
-        char c1[50], c2[50], c3[50], c4[50], c5[50];
+        char c1[128], c2[128], c3[128], c4[128], c5[128];
         decoupe(ligne, c1, c2, c3, c4, c5);
         printf("Col1: %s | Col2: %s | Col3: %s | Col4: %s | Col5: %s\n", c1, c2, c3, c4, c5);
        
