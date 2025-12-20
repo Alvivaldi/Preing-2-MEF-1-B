@@ -8,3 +8,4 @@ typedef struct Chainon {
 } Chainon;
 
 double calculer_pertes(Chainon* c, double vol_entrer);
+void fichier_pertes(char* id, float pertes);
