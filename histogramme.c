@@ -23,7 +23,7 @@
 //     fprintf(Fcapt,  "%s;%.2f\n", a->id, a->usine->volume_capte);
 //     fprintf(Freel, "%s;%.2f\n", a->id, a->usine->volume_reel);
 
-//     remplir_ficher(AVL a, Fmax, Fcapt, Freel);
+//     remplir_ficher(a->fg, Fmax, Fcapt, Freel);
 // })
 
 void ecrireCSV(Usine* racine, FILE* f, int mode) {

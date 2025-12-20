@@ -1,23 +1,31 @@
 #!/bin/bash
 
+
+
 # Vérification des arguments
 if [ $# -ne 3 ]; then
-    echo "Erreur : trop d’arguments"
+    echo "Erreur d’arguments"
     exit 1
 fi
+
+
 
 # Récupération des arguments
 FICHIERS_DATA="$1"
 COMMAND="$2"
 TYPE="$3"
 
-# Compilation du programme C si nécessaire
+
+
+# Compilation du programme C
 EXEC="./wildwater"
 
 if [ ! -f "$EXEC" ]; then
     echo "Compilation du programme C"
     make
 fi
+
+
 
 # Choix du type d'histogramme
 case "$TYPE" in
@@ -49,6 +57,8 @@ case "$TYPE" in
         ;;
 esac
 
+
+
 #* Génération des fichiers .dat
 # echo "Génération des fichiers de données..."
 # ./wildwater "$FICHIER_CSV" histo
@@ -57,7 +67,7 @@ esac
 #    exit 1
 # fi
 
-# 
+
 
 # Création sous-fichiers temporaires pour les 50 plus petites usines 
 # enlève l'en-tête
@@ -65,6 +75,8 @@ tail -n +2 "$FICHIER_DONNEE" | head -n 50 > petites_usines.dat
 
 # Création sous-fichiers temporaires pour 10 plus grandes usines
 tail -n 10 "$FICHIER_DONNEE" > grandes_usines.dat
+
+
 
 # Génération des histogrammes
 echo "Génération des histogrammes PNG"
@@ -82,4 +94,6 @@ gnuplot \
   histo.gp
 
 
+
+#Suppression fichiers temporaires
 rm -f petites_usines.dat grandes_usines.dat
