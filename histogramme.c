@@ -30,7 +30,7 @@ void ecrireCSV(Usine* racine, FILE* f, int mode) {
     if (!racine) return;
 
     // ordre alphabétique inverse
-    ecrireCSV(racine->droite, f, mode);
+    ecrireCSV(racine->gauche, f, mode);
 
     double valeur = 0.0;
 
@@ -45,7 +45,7 @@ void ecrireCSV(Usine* racine, FILE* f, int mode) {
 
     fprintf(f, "%s;%.3f\n", racine->identifiant, valeur);
 
-    ecrireCSV(racine->gauche, f, mode);
+    ecrireCSV(racine->droite, f, mode);
 }
 
 void genererHistogramme(Usine* racine, int mode) {
