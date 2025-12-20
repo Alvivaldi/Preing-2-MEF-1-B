@@ -1,4 +1,4 @@
-void remplir_fichiers(AVL a, FILE* Fmax, FILE* Fcapt, FILE* Freel){
+void remplir_fichiers(AVL* a, FILE* Fmax, FILE* Fcapt, FILE* Freel){
     if(a == NULL){
          return;
     }
@@ -13,10 +13,10 @@ void remplir_fichiers(AVL a, FILE* Fmax, FILE* Fcapt, FILE* Freel){
     fprintf(Fcapt,  "%s;%.2f\n", a->id, a->usine->volume_capte);
     fprintf(Freel, "%s;%.2f\n", a->id, a->usine->volume_reel);
 
-    remplir_ficher(AVL a, Fmax, Fcapt, Freel);
-})
+    remplir_ficher(a, Fmax, Fcapt, Freel);
+}
 
-void generer_fichiers_histogramme(AVL a){
+void generer_fichiers_histogramme(AVL* a){
     FILE *Fmax  = fopen("vol_max.dat", "w");
     FILE *Fcapt  = fopen("vol_captation.dat", "w");
     FILE *Freel = fopen("vol_traitement.dat", "w");
