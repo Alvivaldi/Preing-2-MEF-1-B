@@ -1,5 +1,5 @@
 set terminal png size 1200,600
-set output "histogramme_source.png"
+set output fichier_sortie
 set datafile separator ";"
 
 # Style histogramme
@@ -9,9 +9,11 @@ set boxwidth 0.8
 set xtics rotate by -45
 
 #légende
-set title TITLE
 set xlabel "Usines"
 set ylabel "Volume (k.m3 / an)"
 
-# Tracer le fichier
-plot "vol_captation.dat" using 2:xtic(1) title ""
+# Titre du graphique
+set title titre_graphique
+
+# Tracé de l'histogramme
+plot fichier_data using 2:xtic(1) title ""
