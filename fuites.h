@@ -6,3 +6,5 @@ typedef struct Chainon {
     struct Chainon* fils;    
     struct Chainon* suivant; 
 } Chainon;
+
+double calculer_pertes(Chainon* c, double vol_entrer);
