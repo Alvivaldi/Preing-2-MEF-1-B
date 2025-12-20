@@ -48,3 +48,38 @@ case "$TYPE" in
         exit 1
         ;;
 esac
+
+#* Génération des fichiers .dat
+# echo "Génération des fichiers de données..."
+# ./wildwater "$FICHIER_CSV" histo
+# if [ $? -ne 0 ]; then
+#    echo "Erreur lors de l'exécution du programme C"
+#    exit 1
+# fi
+
+# 
+
+# Création sous-fichiers temporaires pour les 50 plus petites usines 
+# enlève l'en-tête
+tail -n +2 "$FICHIER_DONNEE" | head -n 50 > petites_usines.dat
+
+# Création sous-fichiers temporaires pour 10 plus grandes usines
+tail -n 10 "$FICHIER_DONNEE" > grandes_usines.dat
+
+# Génération des histogrammes
+echo "Génération des histogrammes PNG"
+
+gnuplot \
+  -e "FICHIER_DATA='petites_usines.dat'" \
+  -e "FICHIER_SORTIE='${FICHIER_NOM}_petite.png'" \
+  -e "TITRE_GRAPHIQUE='50 plus petites usines - $TITRE'" \
+  histo.gp
+
+gnuplot \
+  -e "FICHIER_DATA='grandes_usines.dat'" \
+  -e "FICHIER_SORTIE='${FICHIER_NOM}_grandes.png'" \
+  -e "TITRE_GRAPHIQUE='10 plus grandes usines - $TITRE'" \
+  histo.gp
+
+
+rm -f petites_usines.dat grandes_usines.dat
