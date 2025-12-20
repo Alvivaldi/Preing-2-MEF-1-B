@@ -4,7 +4,8 @@
 
 # Vérification des arguments
 if [ $# -ne 3 ]; then
-    echo "Erreur d’arguments"
+    echo "Usage : <fichier_CSV> histo <max|src|real>"
+    echo "Erreur dans le nombre d'arguments"
     exit 1
 fi
 
@@ -56,16 +57,6 @@ case "$TYPE" in
         exit 1
         ;;
 esac
-
-
-
-# Génération des fichiers .dat
-# echo "Génération des fichiers de données..."
-# ./wildwater "$FICHIER_CSV" histo
-# if [ $? -ne 0 ]; then
-#    echo "Erreur lors de l'exécution du programme C"
-#    exit 1
-# fi
 
 
 
