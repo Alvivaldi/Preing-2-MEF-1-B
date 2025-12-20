@@ -203,8 +203,7 @@ void afficherAVL(Usine* racine) {
     afficherAVL(racine->gauche);
 
     // Affichage des données de l’usine
-    printf("ID: %s | Vmax: %.2f | Vcapt: %.2f | Vreal: %.2f\n",
-           racine->identifiant, racine->volume_max, racine->volume_capt, racine->volume_reel);
+    printf("ID: %s | Vmax: %.2f | Vcapt: %.2f | Vreal: %.2f,eq: %d \n",racine->identifiant, racine->volume_max, racine->volume_capt, racine->volume_reel, racine->eq);
 
     // Parcours droit
     afficherAVL(racine->droite);
