@@ -59,7 +59,7 @@ esac
 
 
 
-#* Génération des fichiers .dat
+# Génération des fichiers .dat
 # echo "Génération des fichiers de données..."
 # ./wildwater "$FICHIER_CSV" histo
 # if [ $? -ne 0 ]; then
