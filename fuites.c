@@ -8,22 +8,7 @@ void fichier_pertes(char* id, float pertes){
 }
 
 
-void generer_fichiers_histogramme(AVL a){
-    FILE *Fmax  = fopen("vol_max.dat", "w");
-    FILE *Fcapt  = fopen("vol_captation.dat", "w");
-    FILE *Freel = fopen("vol_traitement.dat", "w");
-    if(Fmax == NULL || Fcapt == NULL || Freel == NULL){
-        printf("erreur ouverture fichiers histogramme");
-        exit(1);
-    }
-    fprintf(Fmax,  "id;volume_max\n");
-    fprintf(Fcapt,  "id;volume_captation\n");
-    fprintf(Freel, "id;volume_traitement\n");
-    remplir_fichiers(a, Fmax, Fcapt, Freel);
-    fclose(Fmax);
-    fclose(Fcapt);
-    fclose(Freel);
-}
+
 double calculer_pertes(Chainon* c, double vol_entrer) {
     if (c == NULL || c->fils == NULL) {
         return 0;
