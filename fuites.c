@@ -1,14 +1,3 @@
-void fichier_pertes(char* id, float pertes){
-    FILE* f=fopen("rendements.dat","a");
-    if (f==NULL){
-        exit(1);
-    }
-    fprintf(f,"%s;%lf\n",id,pertes);
-    fclose(f);
-}
-
-
-
 double calculer_pertes(Chainon* c, double vol_entrer) {
     if (c == NULL || c->fils == NULL) {
         return 0;
@@ -33,4 +22,13 @@ double calculer_pertes(Chainon* c, double vol_entrer) {
     }
 
     return total_fuites;
+}
+
+void fichier_pertes(char* id, float pertes){
+    FILE* f=fopen("rendements.dat","a");
+    if (f==NULL){
+        exit(1);
+    }
+    fprintf(f,"%s;%lf\n",id,pertes);
+    fclose(f);
 }
