@@ -20,7 +20,7 @@ histogramme.o: histogramme.c histogramme.h  fichier.h
 
 # Exécutable
 exec: main.o AVLA.o fuites.o fichier.o histogramme.o 
-	gcc main.o AVLA.o fuites.c fichier.o histogramme.o  -o exec
+	gcc main.o AVLA.o fuites.o fichier.o histogramme.o  -o exec
 
 # Nettoyage
 clean:
