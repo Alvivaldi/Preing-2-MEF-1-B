@@ -7,7 +7,6 @@
 
 - [Introduction](#Introduction)
 - [Pré-requis](#Pré-requis)
-- [Guide d'installation](#Guide-d'installation)
 - [Guide d'utilisation](#Guide-d'utilisation)
 - [Structure du Projet](#Structure-du-projet)
 - [Auteurs](#Auteurs)
@@ -18,4 +17,11 @@
 ## Pré-requis
   - Make
 
-## Guide d'installation 📔 
+## Guide d'utilisation 📔 
+
+Une fois dans le repertoire du projet : 
+```bash
+### Compilez le projet
+make
+```
+
