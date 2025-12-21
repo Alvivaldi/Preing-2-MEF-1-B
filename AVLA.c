@@ -205,6 +205,39 @@ void afficherAVL(Usine* racine) {
     afficherAVL(racine->droite);
 }
 
+Chainon* creerChainon(char* id, double fuite_pourcentage) {
+    Chainon* nouveau = malloc(sizeof(Chainon));
+    if (nouveau == NULL) {
+        printf("Erreur d'allocation\n");
+        exit(1);
+    }
+    strcpy(nouveau->id, id);
+    
+	nouveau->fuites = fuite_pourcentage;
+    nouveau->volume = 0.0; 
+
+    nouveau->fils = NULL;
+    nouveau->suivant = NULL;
+    
+    return nouveau;
+}
+
+void ajouterFils(Chainon* parent, Chainon* nv_fils) {
+    if (parent == NULL || nv_fils == NULL) {
+        return;
+    }
+    if (parent->fils == NULL) {
+        parent->fils = nv_fils;
+    } 
+    else {
+        Chainon* temp = parent->fils;
+        while (temp->suivant != NULL) {
+            temp = temp->suivant;
+        }
+        temp->suivant = nv_fils;
+    }
+}
+
 AVL_fuites* creerAVLfuites(char* id, Chainon* c) {
 
     AVL_fuites* nv = malloc(sizeof(AVL_fuites));
