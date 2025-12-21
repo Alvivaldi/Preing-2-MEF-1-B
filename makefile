@@ -9,7 +9,7 @@ AVLA.o: AVLA.c AVLA.h
 	gcc -c AVLA.c -o AVLA.o
 
 fuites.o: fuites.c fuites.h
-	gcc -c fuites.c -fuites.o
+	gcc -c fuites.c -o fuites.o
 
 fichier.o: fichier.c fichier.h 
 	gcc -c fichier.c -o fichier.o
