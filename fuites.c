@@ -30,7 +30,7 @@ double calculer_pertes(Chainon* c, double vol_entrer) {
     return total_fuites;
 }
 
-void fichier_pertes(char* id, float pertes){
+void fichier_pertes(char* id, double pertes){
     FILE* f=fopen("rendements.dat","a");
     if (f==NULL){
         exit(1);
