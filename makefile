@@ -1,6 +1,6 @@
 all: exec
 
-# Fichiers objets
+
 main.o: main.c  AVLA.h fuites.h fichier.h histogramme.h
 	gcc -c main.c -o main.o
 
@@ -18,11 +18,11 @@ histogramme.o: histogramme.c histogramme.h  fichier.h
 	gcc -c histogramme.c -o histogramme.o
 
 
-# Exécutable
+
 exec: main.o AVLA.o fuites.o fichier.o histogramme.o 
 	gcc main.o AVLA.o fuites.o fichier.o histogramme.o  -o exec
 
-# Nettoyage
+
 clean:
 	rm -f *.o
 	rm -f exec

@@ -31,7 +31,7 @@ Usine* lireCSV(const char* nom) {
 
         char c1[50], c2[50], c3[50], c4[50], c5[50];
         decoupe(ligne, c1, c2, c3, c4, c5);
-        printf("Col1: %s | Col2: %s | Col3: %s | Col4: %s | Col5: %s\n", c1, c2, c3, c4, c5);
+      
        
 
 
@@ -68,6 +68,6 @@ Usine* lireCSV(const char* nom) {
 
     fclose(f);
     printf("\n\nAffichage de l'AVL après lecture du fichier CSV :\n\n");
-    afficherAVL(racine);
+ 
     return racine;
 }
