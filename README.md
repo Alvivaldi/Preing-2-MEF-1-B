@@ -24,4 +24,13 @@ Une fois dans le repertoire du projet :
 ### Compilez le projet
 make
 ```
+// bon j'attend votre parti sur ce que la prof doit faire 
 
+## Structure du projet 
+
+## Auteurs 👤  
+👤 LAMBERT Alecis
+
+👤 KALIAMOORTHY Lasugaa
+
+👤 NJANKOU NANA Charmelle
