@@ -82,7 +82,6 @@ Usine* rotationGauche(Usine* racine) {
 }
 
 
-
 Usine* rotationDroite(Usine* racine) {
     Usine* pivot = racine->gauche;
     int eq_r = racine->eq;
@@ -192,9 +191,6 @@ Usine* chercherUsine(Usine* racine, char* id) {
     }
 }
 
-
-
-
 void afficherAVL(Usine* racine) {
     if (racine == NULL)
         return;
@@ -208,3 +204,136 @@ void afficherAVL(Usine* racine) {
     // Parcours droit
     afficherAVL(racine->droite);
 }
+
+AVL_fuites* creerAVLfuites(char* id, Chainon* c) {
+
+    AVL_fuites* nv = malloc(sizeof(AVL_fuites));
+    if (nv == NULL) {
+        printf("Erreur d'allocation mémoire\n");
+        exit(1);
+    }
+    strcpy(nv->id, id);
+    nv->element = c; 
+    nv->fg = NULL;
+    nv->fd = NULL;
+    nv->eq = 0;
+    return nv;
+}
+
+Chainon* chercherAVLfuites(AVL_fuites* racine, char* id2) {
+    
+    if (racine == NULL) {
+        return NULL;
+    }
+    
+    int cmp = strcmp(id2, racine->id);
+    if (cmp == 0) {
+        return racine->element; 
+    }
+    else if (cmp < 0) {
+        return chercherAVLfuites(racine->fg, id2);
+    }
+    else {
+        return chercherAVLfuites(racine->fd, id2);
+    }
+}
+
+AVL_fuites* rotationGaucheFuites(AVL_fuites* racine) {
+    AVL_fuites* pivot = racine->fd;
+    int eq_r = racine->eq;
+    int eq_p = pivot->eq;
+
+    racine->fd = pivot->fg;
+    pivot->fg = racine;
+
+    racine->eq = eq_r - max(eq_p, 0) - 1;
+    pivot->eq = min3(eq_r - 2, eq_r + eq_p - 2, eq_p - 1);
+
+    return pivot;
+}
+
+AVL_fuites* rotationDroiteFuites(AVL_fuites* racine) {
+    AVL_fuites* pivot = racine->fg;
+    int eq_r = racine->eq;
+    int eq_p = pivot->eq;
+
+    racine->fg = pivot->fd;
+    pivot->fd = racine;
+
+    racine->eq = eq_r - min(eq_p, 0) + 1;
+    pivot->eq = max3(eq_r + 2, eq_r + eq_p + 2, eq_p + 1);
+
+    return pivot;
+}
+
+AVL_fuites* rotationDoubleDroiteFuites(AVL_fuites* a) {
+    if (a == NULL){
+        return NULL;
+    }
+    a->fg = rotationGaucheFuites(a->fg);
+    return rotationDroiteFuites(a);
+}
+
+AVL_fuites* rotationDoubleGaucheFuites(AVL_fuites* a) {
+    if (a == NULL){
+        return NULL;
+    }
+    a->fd = rotationDroiteFuites(a->fd);
+    return rotationGaucheFuites(a);
+}
+
+AVL_fuites* equilibrerAVLfuites(AVL_fuites* a) {
+    if (a == NULL){
+        return NULL;
+    } 
+    if (a->eq >= 2) {
+        if (a->fd->eq >= 0) {
+            return rotationGaucheFuites(a); 
+        } else {
+            return rotationDoubleGaucheFuites(a);
+        }
+    } 
+    else if (a->eq <= -2) {
+        if (a->fg->eq <= 0) {
+            return rotationDroiteFuites(a);
+        } else {
+            return rotationDoubleDroiteFuites(a);
+        }
+    }
+    return a;
+}
+
+AVL_fuites* insertionAVLfuites(AVL_fuites* a, char* id, Chainon* c, int *h) {
+
+    if (a == NULL) {
+       *h = 1;
+		return creerAVLfuites(id,c);
+	}
+	
+    if (strcmp(a->id, id) > 0) { 
+        a->fg = insertionAVLfuites(a->fg, id, c,h);
+        *h = -*h; 
+    }
+    else if (strcmp(id, a->id2) > 0) { 
+        a->fd = insertionAVLfuites(a->fd, id, c, h);
+    }
+    else { 
+        *h = 0;
+        return a;
+    }
+
+     if (*h != 0) {
+        a->eq += *h; 
+        a = equilibrerAVLfuites(a);
+
+        if (a->eq == 0)
+            *h = 0;
+        else
+            *h = 1;
+    }
+
+    return a;
+}
+
+
+
