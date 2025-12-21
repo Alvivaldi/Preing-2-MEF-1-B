@@ -1,3 +1,6 @@
+#ifndef FUITES_H
+#define FUITES_H
+#include "AVLA.h"
 #define MAX 100
 
 typedef struct Chainon {
