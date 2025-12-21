@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "AVLA.h"
 #include "fuites.h"
+
 
 double calculer_pertes(Chainon* c, double vol_entrer) {
     if (c == NULL || c->fils == NULL) {
