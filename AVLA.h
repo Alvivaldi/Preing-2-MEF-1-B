@@ -34,7 +34,15 @@ Usine* rotationDoubleGauche(Usine* a);
 Usine* equilibrerAVL(Usine* a);
 Usine* insertionAVL(Usine* a, Usine* u, int *h) ;
 Usine* chercherUsine(Usine* racine, char* id);
-
+Chainon* creerChainon(char* id, double fuite_pourcentage);
+void ajouterFils(Chainon* parent, Chainon* nv_fils);
+AVL_fuites* creerAVLfuites(char* id, Chainon* c);
+Chainon* chercherAVLfuites(AVL_fuites* racine, char* id2);
+AVL_fuites* rotationGaucheFuites(AVL_fuites* racine);
+AVL_fuites* rotationDoubleDroiteFuites(AVL_fuites* a);
+AVL_fuites* rotationDoubleGaucheFuites(AVL_fuites* a);    
+AVL_fuites* equilibrerAVLfuites(AVL_fuites* a);
+AVL_fuites* insertionAVLfuites(AVL_fuites* a, char* id, Chainon* c, int *h);
 void afficherAVL(Usine* racine);
 
 #endif
