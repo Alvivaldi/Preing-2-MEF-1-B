@@ -28,7 +28,7 @@ make
 
 ## Structure du projet 
 
-AVLA.h / AVLA.c : Contient les structures Usine et AVL_fuites ainsi que toutes les fonctions de rotation et d'équilibrage.
+`AVLA.h / AVLA.c` : Contient les structures Usine et AVL_fuites ainsi que toutes les fonctions de rotation et d'équilibrage.
 
 fuites.h / fuites.c : Gère le calcul des fuites du réseau. Contient la structure Chainon,la fonction creerChainon, ajouterFils et le calcul récursif calculer_pertes.
 
