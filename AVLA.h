@@ -1,6 +1,6 @@
 #ifndef AVLA_H
 #define AVLA_H
-
+#include "fuites.h"
 
 typedef struct Usine {
     char identifiant[50];
@@ -17,7 +17,8 @@ typedef struct AVL_fuites {
     char id[100];           
     Chainon* element;    
     struct AVL_fuites* fg;       
-    struct AVL_fuites* fd;       
+    struct AVL_fuites* fd;  
+    int eq;     
 } AVL_fuites;
 
 

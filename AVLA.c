@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "AVLA.h"
-
+#include "fuites.h"
 
 
 
@@ -314,7 +314,7 @@ AVL_fuites* insertionAVLfuites(AVL_fuites* a, char* id, Chainon* c, int *h) {
         a->fg = insertionAVLfuites(a->fg, id, c,h);
         *h = -*h; 
     }
-    else if (strcmp(id, a->id2) > 0) { 
+    else if (strcmp(id, a->id) > 0) { 
         a->fd = insertionAVLfuites(a->fd, id, c, h);
     }
     else { 
