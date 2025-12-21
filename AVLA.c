@@ -195,32 +195,30 @@ void afficherAVL(Usine* racine) {
     if (racine == NULL)
         return;
 
-    // Parcours gauche
+
     afficherAVL(racine->gauche);
 
-    // Affichage des données de l’usine
     printf("ID: %s | Vmax: %.2f | Vcapt: %.2f | Vreal: %.2f,eq: %d \n",racine->identifiant, racine->volume_max, racine->volume_capt, racine->volume_reel, racine->eq);
 
-    // Parcours droit
     afficherAVL(racine->droite);
 }
 
-Chainon* creerChainon(char* id, double fuite_pourcentage) {
-    Chainon* nouveau = malloc(sizeof(Chainon));
-    if (nouveau == NULL) {
-        printf("Erreur d'allocation\n");
-        exit(1);
-    }
-    strcpy(nouveau->id, id);
+// Chainon* creerChainon(char* id, double fuite_pourcentage) {
+//     Chainon* nouveau = malloc(sizeof(Chainon));
+//     if (nouveau == NULL) {
+//         printf("Erreur d'allocation\n");
+//         exit(1);
+//     }
+//     strcpy(nouveau->id, id);
     
-	nouveau->fuites = fuite_pourcentage;
-    nouveau->volume = 0.0; 
+// 	nouveau->fuites = fuite_pourcentage;
+//     nouveau->volume = 0.0; 
 
-    nouveau->fils = NULL;
-    nouveau->suivant = NULL;
+//     nouveau->fils = NULL;
+//     nouveau->suivant = NULL;
     
-    return nouveau;
-}
+//     return nouveau;
+// }
 
 void ajouterFils(Chainon* parent, Chainon* nv_fils) {
     if (parent == NULL || nv_fils == NULL) {

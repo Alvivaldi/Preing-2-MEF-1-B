@@ -40,8 +40,8 @@ void ecrireCSV(Usine* racine, FILE* f, int mode) {
         valeur = racine->volume_capt;
     else if (mode == VOL_TRAIT)
         valeur = racine->volume_reel;
-    // conversion en millions de m³
-    // valeur /= 1000000.0;
+ 
+    valeur /= 1000000.0;
 
     fprintf(f, "%s;%.3f\n", racine->identifiant, valeur);
 

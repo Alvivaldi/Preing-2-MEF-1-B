@@ -37,7 +37,7 @@ Usine* lireCSV(const char* nom) {
 
 
 
-        /* ----- LIGNE USINE ----- */
+//  LIGNE USINE
         if (estLigneUsine(c2,c3, c4)) {
 
             Usine* u = chercherUsine(racine, c2);
@@ -48,8 +48,7 @@ Usine* lireCSV(const char* nom) {
                 u->volume_max = atof(c4);
             }
         }
-
-        /* ----- SOURCE → USINE ----- */
+// SOURCE - USINE
         else if (estSourceVersUsine(c3, c4, c5)) {
 
             Usine* u = chercherUsine(racine, c3);
