@@ -1,5 +1,5 @@
 # PROJET C-WildWater
-<img src="images/wildwater.png" alt="wildwater" width="400"/>
+<img src="./wildwater.png" alt="wildwater" width="400"/>
 
 
 ##  Table des matières
@@ -29,7 +29,7 @@ make
 ## Structure du projet 
 
 ## Auteurs 👤  
-👤 LAMBERT Alecis
+👤 LAMBERT Alexis
 
 👤 KALIAMOORTHY Lasugaa
 
