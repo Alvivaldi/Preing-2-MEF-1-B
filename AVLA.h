@@ -13,6 +13,14 @@ typedef struct Usine {
     int eq;
 } Usine;
 
+typedef struct AVL_fuites {
+    char id[100];           
+    Chainon* element;    
+    struct AVL_fuites* fg;       
+    struct AVL_fuites* fd;       
+} AVL_fuites;
+
+
 Usine* creerUsine(char* id, double Vmax, double Vcapt, double Vreel);
 int max(int a, int b);
 int min(int a, int b);
