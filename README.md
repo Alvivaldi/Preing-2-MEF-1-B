@@ -26,7 +26,12 @@ make
 Pour la génération d’histogrammes : 
 1)Donner l'accès :
 chmod +x histo2.sh
-2)./script.sh <fichier_donnees> histo {max|src|real}*
+2)./script.sh <fichier_donnees> histo {max|src|real}
+exemple :
+./histo2.sh test.csv histo max       # histogramme du volume maximal
+./histo2.sh test.csv histo src       # histogramme du volume capté
+./histo2.sh test.csv histo real      # histogramme du volume réellement traité
+
 
 ## Structure du projet 
 
