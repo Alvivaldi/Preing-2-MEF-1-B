@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "AVLA.h"
-
+#include "fuites.h"
 
 
 
