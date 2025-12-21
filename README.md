@@ -23,8 +23,10 @@ Une fois dans le repertoire du projet :
 ```bash
 ### Compilez le projet
 make
-```
-// bon j'attend votre parti sur ce que la prof doit faire 
+Pour la génération d’histogrammes : 
+1)Donner l'accès :
+chmod +x histo2.sh
+2)./script.sh <fichier_donnees> histo {max|src|real}*
 
 ## Structure du projet 
 
