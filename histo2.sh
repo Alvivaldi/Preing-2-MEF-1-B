@@ -2,9 +2,7 @@
 
 START_TIME=$(date +%s%3N)
 
-# =========================
-# Vérification des arguments
-# =========================
+
 if [ $# -lt 2 ] || [ $# -gt 3 ]; then
     echo "Erreur : nombre d'arguments invalide"
     exit 1
@@ -19,9 +17,9 @@ if [ ! -f "$DATA_FILE" ]; then
     exit 1
 fi
 
-# =========================
+
 # Compilation si nécessaire
-# =========================
+
 EXEC="./exec"
 
 if [ ! -x "$EXEC" ]; then
@@ -33,9 +31,7 @@ if [ ! -x "$EXEC" ]; then
     fi
 fi
 
-# =========================
-# Traitement demandé
-# =========================
+
 case "$MODE" in
 
     histo)
@@ -89,9 +85,9 @@ case "$MODE" in
         ;;
 esac
 
-# =========================
-# Graphiques (histo uniquement)
-# =========================
+
+# Graphiques
+
 if [ "$MODE" = "histo" ]; then
     mkdir -p images
 
@@ -125,8 +121,8 @@ EOF
     rm -f small.dat big.dat
 fi
 
-# =========================
+
 # Temps total
-# =========================
+
 END_TIME=$(date +%s%3N)
 echo "Durée totale : $((END_TIME - START_TIME)) ms"

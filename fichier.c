@@ -67,7 +67,7 @@ Usine* lireCSV(const char* nom) {
     }
 
     fclose(f);
-    printf("\n\nAffichage de l'AVL après lecture du fichier CSV :\n\n");
+
  
     return racine;
 }
