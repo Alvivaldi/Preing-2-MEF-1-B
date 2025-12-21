@@ -15,7 +15,7 @@ typedef struct Usine {
 
 typedef struct AVL_fuites {
     char id[100];           
-    Chainon* element;    
+    AVL_fuites* element;    
     struct AVL_fuites* fg;       
     struct AVL_fuites* fd;  
     int eq;     
