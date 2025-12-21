@@ -29,7 +29,7 @@ make
 ## Structure du projet 
 
 ## Auteurs 👤  
-👤 LAMBERT Alecis
+👤 LAMBERT Alexis
 
 👤 KALIAMOORTHY Lasugaa
 
