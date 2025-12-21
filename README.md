@@ -29,7 +29,8 @@ make
 ## Structure du projet 
 
 ```bash
-AVLA.h / AVLA.c ```: Contient les structures Usine et AVL_fuites ainsi que toutes les fonctions de rotation et d'équilibrage.
+AVLA.h / AVLA.c
+```: Contient les structures Usine et AVL_fuites ainsi que toutes les fonctions de rotation et d'équilibrage.
 
 fuites.h / fuites.c : Gère le calcul des fuites du réseau. Contient la structure Chainon,la fonction creerChainon, ajouterFils et le calcul récursif calculer_pertes.
 
@@ -38,7 +39,7 @@ fichier.h / fichier.c : Gère les entrées/sorties. Contient decoupe et les deux
 histogramme.h / histogramme.c : Gère la génération des fichiers .dat pour les graphiques.
 
 main.c : Lit les arguments (argc, argv) pour savoir quel mode lancer.
-```
+
 
 ## Auteurs 👤  
 👤 LAMBERT Alexis
